@@ -1,0 +1,43 @@
+diff --git a/DeltaCore/Emulator Core/Audio/AudioManager.swift b/DeltaCore/Emulator Core/Audio/AudioManager.swift
+index 0448cc3..a84bf02
+--- a/DeltaCore/Emulator Core/Audio/AudioManager.swift	
++++ b/DeltaCore/Emulator Core/Audio/AudioManager.swift	
+@@ -498,12 +498,22 @@ private extension AudioManager
+             guard let buffer = unsafeAudioBufferList[0].mData else { return kAudioFileStreamError_UnspecifiedError }
+             
+             let requestedBytes = Int(frameCount) * audioFormat.frameSize
++
++            // Multiplayer synchronization can briefly pause audio production.
++            // AVAudioSourceNode still expects the requested number of frames;
++            // returning DataUnavailable with an empty buffer can stop RemoteIO.
++            // Fill the gap with silence so the audio engine remains running.
++            let outputSilence: () -> OSStatus = {
++                buffer.initializeMemory(as: UInt8.self, repeating: 0, count: requestedBytes)
++                unsafeAudioBufferList[0].mDataByteSize = UInt32(requestedBytes)
++                return noErr
++            }
+             
+             if !isPrimed
+             {
+                 // Make sure audio buffer has enough initial samples to prevent audio distortion.
+                 
+-                guard audioBuffer.availableBytesForReading >= requestedBytes * Int(sampleRateRatio) else { return kAudioFileStreamError_DataUnavailable }
++                guard audioBuffer.availableBytesForReading >= requestedBytes * Int(sampleRateRatio) else { return outputSilence() }
+                 isPrimed = true
+             }
+             
+@@ -512,12 +522,12 @@ private extension AudioManager
+                 // Audio buffer has been reset, so we need to prime it again.
+                 
+                 isPrimed = false
+-                return kAudioFileStreamError_DataUnavailable
++                return outputSilence()
+             }
+             
+             guard audioBuffer.availableBytesForReading >= requestedBytes else {
+                 isPrimed = false
+-                return kAudioFileStreamError_DataUnavailable
++                return outputSilence()
+             }
+                         
+             let readBytes = audioBuffer.read(into: buffer, preferredSize: requestedBytes)

@@ -1,0 +1,34 @@
+diff --git a/src/Wifi.cpp b/src/Wifi.cpp
+index c2614e7..b9a2425 100644
+--- a/src/Wifi.cpp
++++ b/src/Wifi.cpp
+@@ -1505,9 +1505,19 @@ bool CheckRX(int type) // 0=regular 1=MP replies 2=MP host frames
+     *(u16*)&RXBuffer[6] = txrate;
+     *(u16*)&RXBuffer[8] = framelen;
+ 
++    u16 frametype = (framectl & 0x00FF);
+     bool macgood = (RXBuffer[12 + 4] & 0x01) || MACEqual(&RXBuffer[12 + 4], (u8*)&IOPORT(W_MACAddr0));
+ 
+-    if (((framectl & 0x00FF) == 0x0010) && timestamp && macgood)
++    // Backport from newer melonDS: authentication/association frames can
++    // arrive late over LAN emulation. Keep the post-beacon receive window
++    // open long enough for the connection handshake to complete.
++    if ((frametype == 0x00B0 || frametype == 0x0010 || frametype == 0x0000) && timestamp && macgood)
++    {
++        if (IOPORT(W_BeaconCount2))
++            IOPORT(W_BeaconCount2) += 10;
++    }
++
++    if ((frametype == 0x0010) && timestamp && macgood)
+     {
+         // if receiving an association response: get the sync value from the host
+ 
+@@ -1525,7 +1535,7 @@ bool CheckRX(int type) // 0=regular 1=MP replies 2=MP host frames
+         RXTimestamp = 0;
+         StartRX();
+     }
+-    else if (((framectl & 0x00FF) == 0x00C0) && timestamp && macgood && IsMPClient)
++    else if ((frametype == 0x00C0) && timestamp && macgood && IsMPClient)
+     {
+         IsMPClient = false;
+         NextSync = 0;

@@ -1,0 +1,163 @@
+diff --git a/MelonDSDeltaCore.xcodeproj/project.pbxproj b/MelonDSDeltaCore.xcodeproj/project.pbxproj
+index 3c5dd4c..f8b9938 100644
+--- a/MelonDSDeltaCore.xcodeproj/project.pbxproj
++++ b/MelonDSDeltaCore.xcodeproj/project.pbxproj
+@@ -7,6 +7,15 @@
+ 	objects = {
+ 
+ /* Begin PBXBuildFile section */
++		C0DE10000000000000000001 /* MPLANClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000001 /* MPLANClient.cpp */; };
++		C0DE10000000000000000002 /* callbacks.c in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000002 /* callbacks.c */; };
++		C0DE10000000000000000003 /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000003 /* compress.c */; };
++		C0DE10000000000000000004 /* host.c in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000004 /* host.c */; };
++		C0DE10000000000000000005 /* list.c in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000005 /* list.c */; };
++		C0DE10000000000000000006 /* packet.c in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000006 /* packet.c */; };
++		C0DE10000000000000000007 /* peer.c in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000007 /* peer.c */; };
++		C0DE10000000000000000008 /* protocol.c in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000008 /* protocol.c */; };
++		C0DE10000000000000000009 /* unix.c in Sources */ = {isa = PBXBuildFile; fileRef = C0DE20000000000000000009 /* unix.c */; };
+ 		BF02B2C324366EF6001B4E65 /* Wifi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF02B28C24366EF4001B4E65 /* Wifi.cpp */; };
+ 		BF02B2C424366EF6001B4E65 /* SPI.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF02B28E24366EF4001B4E65 /* SPI.cpp */; };
+ 		BF02B2C524366EF6001B4E65 /* NDSCart.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BF02B28F24366EF4001B4E65 /* NDSCart.cpp */; };
+@@ -153,6 +162,16 @@
+ /* End PBXCopyFilesBuildPhase section */
+ 
+ /* Begin PBXFileReference section */
++		C0DE20000000000000000001 /* MPLANClient.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MPLANClient.cpp; sourceTree = "<group>"; };
++		C0DE2000000000000000000A /* MPLANClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPLANClient.h; sourceTree = "<group>"; };
++		C0DE20000000000000000002 /* callbacks.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = callbacks.c; path = External/enet/callbacks.c; sourceTree = SOURCE_ROOT; };
++		C0DE20000000000000000003 /* compress.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = compress.c; path = External/enet/compress.c; sourceTree = SOURCE_ROOT; };
++		C0DE20000000000000000004 /* host.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = host.c; path = External/enet/host.c; sourceTree = SOURCE_ROOT; };
++		C0DE20000000000000000005 /* list.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = list.c; path = External/enet/list.c; sourceTree = SOURCE_ROOT; };
++		C0DE20000000000000000006 /* packet.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = packet.c; path = External/enet/packet.c; sourceTree = SOURCE_ROOT; };
++		C0DE20000000000000000007 /* peer.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = peer.c; path = External/enet/peer.c; sourceTree = SOURCE_ROOT; };
++		C0DE20000000000000000008 /* protocol.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = protocol.c; path = External/enet/protocol.c; sourceTree = SOURCE_ROOT; };
++		C0DE20000000000000000009 /* unix.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = unix.c; path = External/enet/unix.c; sourceTree = SOURCE_ROOT; };
+ 		BF02B28324366DDF001B4E65 /* libMelonDS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMelonDS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+ 		BF02B28C24366EF4001B4E65 /* Wifi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Wifi.cpp; path = melonDS/src/Wifi.cpp; sourceTree = SOURCE_ROOT; };
+ 		BF02B28D24366EF4001B4E65 /* ARMInterpreter_Branch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ARMInterpreter_Branch.h; path = melonDS/src/ARMInterpreter_Branch.h; sourceTree = SOURCE_ROOT; };
+@@ -504,6 +523,8 @@
+ 			children = (
+ 				BF02B2EE243674AF001B4E65 /* MelonDSEmulatorBridge.h */,
+ 				BF02B2EF243674AF001B4E65 /* MelonDSEmulatorBridge.mm */,
++				C0DE2000000000000000000A /* MPLANClient.h */,
++				C0DE20000000000000000001 /* MPLANClient.cpp */,
+ 			);
+ 			path = Bridge;
+ 			sourceTree = "<group>";
+@@ -1039,6 +1060,15 @@
+ 			isa = PBXSourcesBuildPhase;
+ 			buildActionMask = 2147483647;
+ 			files = (
++				C0DE10000000000000000001 /* MPLANClient.cpp in Sources */,
++				C0DE10000000000000000002 /* callbacks.c in Sources */,
++				C0DE10000000000000000003 /* compress.c in Sources */,
++				C0DE10000000000000000004 /* host.c in Sources */,
++				C0DE10000000000000000005 /* list.c in Sources */,
++				C0DE10000000000000000006 /* packet.c in Sources */,
++				C0DE10000000000000000007 /* peer.c in Sources */,
++				C0DE10000000000000000008 /* protocol.c in Sources */,
++				C0DE10000000000000000009 /* unix.c in Sources */,
+ 				D5C7DD1B2E26D35A0048FF5C /* MelonDSTypes.m in Sources */,
+ 				BF02B2F1243674AF001B4E65 /* MelonDSEmulatorBridge.mm in Sources */,
+ 				BF02B2ED24367486001B4E65 /* MelonDS.swift in Sources */,
+@@ -1272,6 +1302,7 @@
+ 				TARGETED_DEVICE_FAMILY = "1,2,6";
+ 				USER_HEADER_SEARCH_PATHS = (
+ 					"\"$(SRCROOT)\"",
++					"\"$(SRCROOT)/External/enet/include\"",
+ 					"\"$(SRCROOT)/melonDS/src/teakra/include\"",
+ 					"\"$(SRCROOT)/melonDS/src/frontend\"",
+ 				);
+@@ -1304,6 +1335,7 @@
+ 				TARGETED_DEVICE_FAMILY = "1,2,6";
+ 				USER_HEADER_SEARCH_PATHS = (
+ 					"\"$(SRCROOT)\"",
++					"\"$(SRCROOT)/External/enet/include\"",
+ 					"\"$(SRCROOT)/melonDS/src/teakra/include\"",
+ 					"\"$(SRCROOT)/melonDS/src/frontend\"",
+ 				);
+diff --git a/MelonDSDeltaCore/Bridge/MelonDSEmulatorBridge.mm b/MelonDSDeltaCore/Bridge/MelonDSEmulatorBridge.mm
+index ab7d75b..09f7bec 100644
+--- a/MelonDSDeltaCore/Bridge/MelonDSEmulatorBridge.mm
++++ b/MelonDSDeltaCore/Bridge/MelonDSEmulatorBridge.mm
+@@ -28,6 +28,7 @@
+ 
+ #include "melonDS/src/frontend/qt_sdl/Config.h"
+ #include "melonDS/src/frontend/qt_sdl/LAN_Socket.h"
++#include "MPLANClient.h"
+ 
+ #include <memory>
+ 
+@@ -1133,54 +1134,64 @@ void Mutex_Unlock(Mutex *m)
+     
+     bool MP_Init()
+     {
+-        return false;
++        bool result = MPLAN::Init();
++        NSLog(@"DQ9P2P: MPLAN Init result=%d", result);
++        return result;
+     }
+     
+     void MP_DeInit()
+     {
++        MPLAN::DeInit();
+     }
+ 
+     void MP_Begin()
+     {
++        NSLog(@"DQ9P2P: MP_Begin");
++        NSLog(@"DQ9P2P: entering MPLAN Begin");
++        MPLAN::Begin();
++        NSLog(@"DQ9P2P: leaving MPLAN Begin");
+     }
+ 
+     void MP_End()
+     {
++        MPLAN::End();
+     }
+     
+     int MP_SendPacket(u8* data, int len, u64 timestamp)
+     {
+-        return 0;
++        NSLog(@"DQ9P2P: MP_SendPacket len=%d ts=%llu", len, timestamp);
++        return MPLAN::SendPacket(data, len, timestamp);
+     }
+     
+     int MP_RecvPacket(u8* data, u64* timestamp)
+     {
+-        return 0;
++        return MPLAN::RecvPacket(data, timestamp);
+     }
+ 
+     int MP_SendCmd(u8* data, int len, u64 timestamp)
+     {
+-        return 0;
++        NSLog(@"DQ9P2P: MP_SendCmd len=%d ts=%llu", len, timestamp);
++        return MPLAN::SendCmd(data, len, timestamp);
+     }
+ 
+     int MP_SendReply(u8* data, int len, u64 timestamp, u16 aid)
+     {
+-        return 0;
++        return MPLAN::SendReply(data, len, timestamp, aid);
+     }
+ 
+     int MP_SendAck(u8* data, int len, u64 timestamp)
+     {
+-        return 0;
++        return MPLAN::SendAck(data, len, timestamp);
+     }
+ 
+     int MP_RecvHostPacket(u8* data, u64* timestamp)
+     {
+-        return 0;
++        return MPLAN::RecvHostPacket(data, timestamp);
+     }
+ 
+     u16 MP_RecvReplies(u8* data, u64 timestamp, u16 aidmask)
+     {
+-        return 0;
++        return MPLAN::RecvReplies(data, timestamp, aidmask);
+     }
+     
+     bool LAN_Init()
