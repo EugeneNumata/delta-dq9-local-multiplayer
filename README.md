@@ -1,6 +1,6 @@
 # Delta DQ9 Local Multiplayer PoC
 
-> This repository is the first working proof of concept for **NetroQuest** — an open, community-driven effort to bring local multiplayer from retro games across modern platforms. The name combines *Net*, *Retro*, and *Quest*.
+> This repository is the first working proof of concept for **NetroQuest 9** — an open, community-driven effort to bring local multiplayer from retro games across modern platforms. The name combines *Net*, *Retro*, and *Quest*; *9* preserves the project's origin in the first successful Dragon Quest IX test.
 
 An experimental cross-platform bridge that connects **Dragon Quest IX local wireless** between an iPhone build of Delta and a desktop melonDS LAN host.
 
@@ -25,6 +25,7 @@ On 2026-09-04, the same iPhone build also completed multiplayer communication wi
 - `patches/melonds-wifi.patch` — older melonDS Wi-Fi timing compatibility.
 - `patches/delta-core-audio.patch` — iOS audio underrun recovery.
 - `docs/architecture.md` — protocol flow and the debugging result.
+- `docs/netroquest9-host-poc.md` — the first user-hosted internet-play experiment.
 
 ## Reproduction baseline
 
