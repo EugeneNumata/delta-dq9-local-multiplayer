@@ -7,7 +7,7 @@ DQ9 guest Wi-Fi
   -> old melonDS Wifi.cpp
   -> Delta Platform::MP_* bridge
   -> MPLANClient (ENet, UDP 7064)
-  -> official melonDS 1.1 LAN host
+  -> desktop melonDS LAN host (validated on macOS and Windows)
   -> host DQ9 guest Wi-Fi
 ```
 
@@ -27,6 +27,8 @@ MP command -> reply -> acknowledgement
 ```
 
 The association request required five retries in the successful run. melonDS 1.1 marks an incoming LAN packet stale after 16 ms; a small scheduling stall can therefore discard a valid management frame before the emulated game consumes it. Only authentication and association frames are retried, at 80 ms intervals with a hard limit of eight retries.
+
+The original captured trace came from the macOS host. A later live test on 2026-09-04 confirmed that the iPhone client could also communicate with a Windows-hosted melonDS session, demonstrating that the bridge is not tied to macOS.
 
 ## MAC translation
 
