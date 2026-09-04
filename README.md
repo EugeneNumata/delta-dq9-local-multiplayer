@@ -1,5 +1,7 @@
 # Delta DQ9 Local Multiplayer PoC
 
+> This repository is the first working proof of concept for **NetroQuest** — an open, community-driven effort to bring local multiplayer from retro games across modern platforms. The name combines *Net*, *Retro*, and *Quest*.
+
 An experimental cross-platform bridge that connects **Dragon Quest IX local wireless** between an iPhone build of Delta and a desktop melonDS LAN host.
 
 On 2026-08-27, the iPhone client authenticated, associated as AID 1, entered the host's multiplayer world, and exchanged continuous melonDS MP command/reply/ack frames. Performance still needs tuning; this repository documents the working proof of concept rather than a finished consumer release.
